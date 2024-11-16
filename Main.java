@@ -105,6 +105,139 @@ public class Main {
         }
     }
 
+    private static void mostrarModoRadio(Scanner scanner, ModoRadio radio) {
+        System.out.println("╔═══════════════════════════════════════╗");
+        System.out.println("║            Modo Radio                 ║");
+        System.out.println("╠═══════════════════════════════════════╣");
+        System.out.println("║  1. Cambiar frecuencia (AM/FM)        ║");
+        System.out.println("║  2. Cambiar emisora                  ║");
+        System.out.println("║  3. Guardar emisora                  ║");
+        System.out.println("║  4. Cargar emisora guardada          ║");
+        System.out.println("╚═══════════════════════════════════════╝");
+        System.out.print("Seleccione una opción: ");
+
+        int opcionRadio = scanner.nextInt();
+        switch (opcionRadio) {
+            case 1:
+                radio.cambiarFrecuencia();
+                System.out.println("Frecuencia cambiada a: " + radio.getFrecuencia());
+                break;
+            case 2:
+                System.out.print("Ingrese la nueva frecuencia: ");
+                double frecuencia = scanner.nextDouble();
+                radio.cambiarEmisora(frecuencia);
+                System.out.println("Emisora cambiada a: " + frecuencia);
+                break;
+            case 3:
+                radio.guardarEmisora(radio.getEmisoraActual());
+                System.out.println("Emisora guardada.");
+                break;
+            case 4:
+                System.out.print("Ingrese la posición de la emisora guardada: ");
+                int posicion = scanner.nextInt();
+                radio.cargarEmisora(posicion);
+                System.out.println("Emisora cargada desde la posición " + posicion);
+                break;
+            default:
+                System.out.println("Opción no válida.");
+        }
+    }
+
+    private static void mostrarModoReproduccion(Scanner scanner, ModoReproduccion reproduccion) {
+        System.out.println("╔═══════════════════════════════════════╗");
+        System.out.println("║        Modo Reproducción              ║");
+        System.out.println("╠═══════════════════════════════════════╣");
+        System.out.println("║  1. Seleccionar lista de reproducción ║");
+        System.out.println("║  2. Cambiar canción (adelante/atrás)  ║");
+        System.out.println("║  3. Escuchar canción actual          ║");
+        System.out.println("╚═══════════════════════════════════════╝");
+        System.out.print("Seleccione una opción: ");        
+        int opcionReproduccion = scanner.nextInt();
+
+        switch (opcionReproduccion) {
+            case 1:
+                String[] lista = {"Cancion1", "Cancion2", "Cancion3"};
+                reproduccion.seleccionarLista(lista);
+                System.out.println("Lista de reproducción seleccionada.");
+                break;
+            case 2:
+                System.out.print("Ingrese dirección ('adelante' o 'atrás'): ");
+                String direccion = scanner.next();
+                reproduccion.cambiarCancion(direccion);
+                System.out.println("Canción cambiada.");
+                break;
+            case 3:
+                reproduccion.escucharCancion();
+                System.out.println("Escuchando canción: " + reproduccion.getCancionActual());
+                break;
+            default:
+                System.out.println("Opción no válida.");
+        }
+    }
+
+    private static void mostrarModoTelefono(Scanner scanner, ModoTelefono telefono) {
+        System.out.println("╔═══════════════════════════════════════╗");
+        System.out.println("║           Modo Teléfono               ║");
+        System.out.println("╠═══════════════════════════════════════╣");
+        System.out.println("║  1. Conectar teléfono                 ║");
+        System.out.println("║  2. Desconectar teléfono              ║");
+        System.out.println("║  3. Mostrar contactos                 ║");
+        System.out.println("║  4. Llamar a un contacto              ║");
+        System.out.println("║  5. Finalizar llamada                 ║");
+        System.out.println("╚═══════════════════════════════════════╝");
+        System.out.print("Seleccione una opción: ");
+
+        int opcionTelefono = scanner.nextInt();
+        switch (opcionTelefono) {
+            case 1:
+                telefono.conectarTelefono();
+                System.out.println("Teléfono conectado.");
+                break;
+            case 2:
+                telefono.desconectarTelefono();
+                System.out.println("Teléfono desconectado.");
+                break;
+            case 3:
+                telefono.mostrarContactos();
+                break;
+            case 4:
+                System.out.print("Ingrese el nombre del contacto: ");
+                String nombreContacto = scanner.next();
+                telefono.llamarContacto(nombreContacto);
+                System.out.println("Llamando a " + nombreContacto);
+                break;
+            case 5:
+                telefono.finalizarLlamada();
+                System.out.println("Llamada finalizada.");
+                break;
+            default:
+                System.out.println("Opción no válida.");
+        }
+    }
+
+    private static void mostrarModoProductividad(Scanner scanner, ModoProductividad productividad) {
+        System.out.println("╔═══════════════════════════════════════╗");
+        System.out.println("║        Modo Productividad             ║");
+        System.out.println("╠═══════════════════════════════════════╣");
+        System.out.println("║  1. Ver pronóstico del tiempo        ║");
+        System.out.println("║  2. Activar modo espera              ║");
+        System.out.println("╚═══════════════════════════════════════╝");
+        System.out.print("Seleccione una opción: ");
+
+        int opcionProductividad = scanner.nextInt();
+        switch (opcionProductividad) {
+            case 1:
+                productividad.verPronostico();
+                break;
+            case 2:
+                productividad.modoEspera();
+                break;
+            default:
+                System.out.println("Opción no válida.");
+        }
+    }    
+    
+
     private static void mostrarClimatizacion(Scanner scanner, Climatizacion climatizacion) {
         System.out.println("╔═══════════════════════════════════════╗");
         System.out.println("║     Ajustes de Climatización          ║");
